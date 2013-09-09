@@ -2,7 +2,7 @@ Service Stack Server-Side Validation for AngularJS (S4Validation)
 ===============================
 
 
-*** Work in Progress ***
+*** Work in Progress *** Not complete, not even spell checked.
 
 
 When using Service Stack <a href="https://github.com/ServiceStack/ServiceStack/wiki/Validation#fluentvalidation-for-request-dtos">Fluent Validation</a>, validation errors for request DTO are returned as in the following JSON example.  
@@ -78,7 +78,7 @@ public class Items
 ```
 
 
-When matched, the ng-model is set to invlaid (via Angular's <a href="http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController#$setValidity"/> `$setValidity` method</a>. Angular will then add `ng-invalid` to the form element's class automatically. TODO... continue.
+When matched, the ng-model is set to invalid (via Angular's <a href="http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController#$setValidity"/> `$setValidity` method</a>. Angular will then add `ng-invalid` to the form element's class automatically. TODO... continue.
 
 
 
