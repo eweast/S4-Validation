@@ -38,7 +38,7 @@ This module provides the 's4-validate-field' directive to match `FieldName` with
 However, When the ng-model does not match the request DTO properties exactly, due a nested objects within ng-repate, wrapper, or other mapping, a string can be passed to `s4-validate-field` to map the approprate DTO property.
 
 ```c#
-public class UserRequest \\ <-- the request DTO 
+public class UserRequest // <-- the request DTO 
 {
     public User user { get; set;}
 }
@@ -56,7 +56,7 @@ public class User
 ```
 
 ```c#
-public class ItemsRequest \\ <-- the request DTO 
+public class ItemsRequest // <-- the request DTO 
 {
     public List<Item> Items { get; set;}
 }
