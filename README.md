@@ -7,7 +7,7 @@ Service Stack Server-Side Validation for AngularJS
 The ultimate goal of "servicestack-angular-validation" is to wire together Service Stack and Angular's validation capabilties with as little configuaration as possible while relying on both frameworks to do the heavy lifting.
 
 
-When using Service Stack <a href="https://github.com/ServiceStack/ServiceStack/wiki/Validation#fluentvalidation-for-request-dtos">Fluent Validation</a>, validation errors are returned within the `Errors` array as the following examples shows.  
+When using Service Stack with <a href="https://github.com/ServiceStack/ServiceStack/wiki/Validation#fluentvalidation-for-request-dtos">Fluent Validation</a>, validation errors are returned within the `Errors` array as the following examples shows.  
 
 ```javascript
 // Source: https://github.com/ServiceStack/ServiceStack/wiki/Validation#fluentvalidation-for-request-dtos
@@ -33,10 +33,10 @@ Of course, the `FieldName`s returned by Service Stack will match the request DTO
 
 ServiceStack-Angular-Validaiton consists of a single factory for intercepting $http error responses and two directives for wiring `FieldName`s to the approprate element/ngModel.
 
-The $http interceptor identifies $http error responses containting a non-empty `Errors` array. The interceptor dispatches and event for each object within the array via Angular's <a href='http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$broadcast'/>broadcast method</a> on the <a href="http://docs.angularjs.org/api/ng.$rootScope"/>$rootScope</a>. The event contains the `ErrorCode` and `Message` as arguements. The events' names are derived from the error's `FieldName` ("ValidationError. + `FieldName`") so creating a listener for the event on the directive (or elsewhere) is straightfoward. 
+The $http interceptor identifies $http error responses containting a non-empty `Errors` array. The interceptor dispatches and event for each object within the array via Angular's <a href='http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$broadcast'>$broadcast method</a> on the <a href="http://docs.angularjs.org/api/ng.$rootScope"/>$rootScope</a>. The event contains the `ErrorCode` and `Message` as arguements. The events' names are derived from the error's `FieldName` ("ValidationError. + `FieldName`") so creating a listener for the event on the directive (or elsewhere) is straightfoward. 
 
 
-Both directives provided by ServiceStack-Angular-Validaiton use event listeners using Angular's <a href="http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$on"/>$on</a> method. By default, the directive will listen for the name of the element's `ng-model`. 
+Both directives provided by ServiceStack-Angular-Validaiton use event listeners using Angular's <a href="http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$on">$on</a> method. By default, the directive will listen for the name of the element's `ng-model`. 
 
 Example
 ```html
@@ -86,7 +86,7 @@ public class Items
 </div>
 ```
 
-Once the directive catches the validation event, the corrosponding `ng-model` is set to invalid via Angular's <a href="http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController#$setValidity"/> `$setValidity` method</a>. Angular will then add `ng-invalid` to the form element's class automatically. In addition, the directive will add the user friendly error `message` to the element's <a href="http://angular-ui.github.io/bootstrap/"/>UI-Bootstrap tooltip</a> if the tooltip directive is present.
+Once the directive catches the validation event, the corrosponding `ng-model` is set to invalid via Angular's <a href="http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController#$setValidity"> `$setValidity` method</a>. Angular will then add `ng-invalid` to the form element's class automatically. In addition, the directive will add the user friendly error `message` to the element's <a href="http://angular-ui.github.io/bootstrap/"/>UI-Bootstrap tooltip</a> if the tooltip directive is present.
 ```html
   <input type='text' ng-model='propA' s4-validate-field tooltip/>
 ```
