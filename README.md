@@ -134,7 +134,11 @@ Example of result: http://jsfiddle.net/ACehg/1
 ## Things Mentioned That I Do Not Own
 
 AngularJS by Google @ http://angularjs.org/ AND https://github.com/angular/angular.js
+
 Service Stack by Demis Bellot @ http://www.servicestack.net/ AND https://github.com/ServiceStack/ServiceStack
+
 Fluent Validation by Jeremy Skinner @ http://fluentvalidation.codeplex.com/ AND http://github.com/JeremySkinner/FluentValidation
+
 Bootstrap by Twitter @ http://getbootstrap.com/2.3.2/ AND https://github.com/twbs/bootstrap
+
 UI Bootstrap by the Angular-UI Team @ http://angular-ui.github.io/bootstrap/ AND http://github.com/angular-ui/bootstrap
