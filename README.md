@@ -1,11 +1,13 @@
-Service Stack Server-Side Validation for AngularJS (S4Validation)
+Service Stack Server-Side Validation for AngularJS 
 ===============================
 
 
 *** Work in Progress *** Not complete, not even spell checked.
 
+The ultimate goal of "servicestack-angular-validation" is to wire together Service Stack and Angular's validation capabilties with as little configuaration as possible while relying on both frameworks to do the heavy lifting.
 
-When using Service Stack <a href="https://github.com/ServiceStack/ServiceStack/wiki/Validation#fluentvalidation-for-request-dtos">Fluent Validation</a>, validation errors for request DTO are returned as in the following JSON example.  
+
+When using Service Stack <a href="https://github.com/ServiceStack/ServiceStack/wiki/Validation#fluentvalidation-for-request-dtos">Fluent Validation</a>, validation errors are returned within the `Errors` array as the following examples shows.  
 
 ```javascript
 // Source: https://github.com/ServiceStack/ServiceStack/wiki/Validation#fluentvalidation-for-request-dtos
@@ -27,15 +29,20 @@ When using Service Stack <a href="https://github.com/ServiceStack/ServiceStack/w
 }
 ```
 
-Of course, the `FieldName`s returned by Service Stack will match the request DTO property names.
+Of course, the 'FieldNames' returned by Service Stack will match the request DTO property names.
 
-This module provides the 's4-validate-field' directive to match `FieldName` with the approprate form element and its corrosponding ng-model. By default, the directive will look for a `FieldName` with the same name as the ng-model. 
+ServiceStack-Angular-Validaiton consists of a single factory for intercepting $http error responses and two directives for wiring `FieldName`s to the approprate element/ngModel.
+
+The $http interceptor identifies $http error responses containting non-empty `Errors` array. Each object within the array are simply dispatched as events via Angular's <a href='http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$broadcast'/>$broadcast method</a> on the <a href="http://docs.angularjs.org/api/ng.$rootScope"/>$rootScope</a>. The events' names are derived from the error's `FieldName` so creating a lister on the directive (or elsewhere) is straightfoward. 
+
+
+Both directives provided by ServiceStack-Angular-Validaiton use event listeners using Angular's <a href="http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$on"/>$on</a> method. By default, the directive will listen for the name of the element's `ng-model`. 
 
 ```html
 <input type='text' ng-model='Age' s4-validate-field/>
 ```
 
-However, When the ng-model does not match the request DTO properties exactly, due a nested objects within ng-repate, wrapper, or other mapping, a string can be passed to `s4-validate-field` to map the approprate DTO property.
+However, When the ng-model does not match the request DTO properties exactly, due a nested objects within ng-repeat, a wrapper, or other mapping, a string can be passed to map the approprate DTO property.
 
 ```c#
 public class UserRequest // <-- the request DTO 
@@ -74,7 +81,6 @@ public class Items
   <input type='text' ng-model='item.PropertyA' s4-validate-field='Items[{{$index}}].PropertyA'/>
   <input type='text' ng-model='item.PropertyB' s4-validate-field='Items[{{$index}}].PropertyB'/>
 </div>
-
 ```
 
 
