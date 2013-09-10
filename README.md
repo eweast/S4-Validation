@@ -31,14 +31,13 @@ Use the directive.
 ```html
   <input type='text' ng-model='foo' s4-validate-field tooltip/>
   <input type='text' ng-model='bar' s4-validate-field="bar"/ tooltip>
-</div>
 ```
 `tooltip` requires <a href="http://angular-ui.github.io/bootstrap/">UI Bootstrap</a>. The tooltip directive is optional, but without it, you'll need to extend S4Validation to show the user friendly error message to the user.
 
 That's it.
 
-## How It Works
 
+## How It Works
 
 When using Service Stack with <a href="https://github.com/ServiceStack/ServiceStack/wiki/Validation#fluentvalidation-for-request-dtos">Fluent Validation</a>, validation errors are returned within the `Errors` array as the following examples shows.  
 
