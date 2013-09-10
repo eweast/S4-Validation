@@ -45,7 +45,7 @@ Example
 
 However, when the ng-model name does not match the request DTO properties exactly a string representing the DTO property name can be passed to the directive.
 
-Example
+Example 1
 ```c#
 public class InsertUserRequest // <-- the request DTO 
 {
@@ -60,13 +60,12 @@ public class User
     public int Age { get; set; }
 }
 ```
-
 ```html
 <input type='text' ng-model='Name' s4-validate-field='user.Name'/>
 <input type='text' ng-model='Age' s4-validate-field='user.Age'/>
 ```
 
-Example
+Example 2
 ```c#
 public class InsertItemsRequest // <-- the request DTO 
 {
@@ -80,7 +79,6 @@ public class Items
 }
 
 ```
-
 ```html
 <div ng-repeat='item in items'>
   <input type='text' ng-model='item.PropertyA' s4-validate-field='Items[{{$index}}].PropertyA'/>
@@ -89,12 +87,11 @@ public class Items
 ```
 
 Once the directive catches the validation event, the corrosponding `ng-model` is set to invalid via Angular's <a href="http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController#$setValidity"/> `$setValidity` method</a>. Angular will then add `ng-invalid` to the form element's class automatically. In addition, the directive will add the user friendly error `message` to the element's <a href="http://angular-ui.github.io/bootstrap/"/>UI-Bootstrap tooltip</a> if the tooltip directive is present.
-
 ```html
   <input type='text' ng-model='propA' s4-validate-field tooltip/>
-</div>
 ```
 
+The 'ng-model' is set back to valid once the user makes a change to that model. In addition, the error message displayed by the tooltip is removed once the model is changed its element loses the focus. This should prevent the user from becoming confused by a red box (or whatever you choose) and error message that would otherwise not go away until the form is re-submitted.
 
 
 
