@@ -1,11 +1,6 @@
 #Service Stack Server-Side Validation for AngularJS (S4-Validation)
 
-
-
-*** Work in Progress ***
-
 The ultimate goal of S4 Validation is to wire together Service Stack and Angular's validation capabilities with as little configuration as possible while relying on both frameworks to do the heavy lifting.
-
 
 
 ## How to Use
@@ -69,21 +64,18 @@ S4-Validation consists of a single factory for intercepting $http error response
 The $http interceptor identifies $http error responses containing a non-empty `Errors` array. The interceptor dispatches and event for each object within the array via Angular's <a href='http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$broadcast'>$broadcast method</a> on the <a href="http://docs.angularjs.org/api/ng.$rootScope">$rootScope</a>. The event contains the `ErrorCode` and `Message` as arguments. The events' names are derived from the error's `FieldName` ("ValidationError. + `FieldName`") so creating a listener for the event on the directive (or elsewhere) is straightforward. 
 
 
-Both directives provided by S4-Validation use event listeners using Angular's <a href="http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$on">$on</a> method. By default, the directive will listen for the name of the element's `ng-model`. 
-
-Example
+The directives provided by S4-Validationn (`s4-validate-field`) use event listeners using Angular's <a href="http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$on">$on</a> method. By default, the directive will listen for the name of the element's `ng-model`. 
 ```html
 <input type='text' ng-model='Age' s4-validate-field/>
 ```
 
 However, when the ng-model name does not match the request DTO properties exactly a string representing the DTO property name can be passed to the directive.
 
-Example 1
+Example 1:
 ```c#
 public class InsertUserRequest // <-- the request DTO 
 {
     public User user { get; set;}
-    public string foo { get; set; }
     public string bar { get; set; }
 }
 
@@ -95,10 +87,10 @@ public class User
 ```
 ```html
 <input type='text' ng-model='Name' s4-validate-field='user.Name'/>
-<input type='text' ng-model='Age' s4-validate-field='user.Age'/>
+<input type='text' ng-model='foo' s4-validate-field='bar'/>
 ```
 
-Example 2
+Example 2:
 ```c#
 public class InsertItemsRequest // <-- the request DTO 
 {
@@ -137,6 +129,7 @@ In addition, the directive will add the user friendly error `message` to the ele
 The `ng-model` is set back to valid once the user makes a change to that model. In addition, the error message displayed by the tooltip is removed once the `ng-model` is changed and its related element loses the focus. This should prevent the user from becoming confused by error indicators and error messages that would otherwise not go away until the form is re-submitted.
 
 Example of result: http://jsfiddle.net/ACehg/1
+
 
 ## Things Mentioned That I Do Not Own
 
