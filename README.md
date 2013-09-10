@@ -33,21 +33,25 @@ Of course, the `FieldName`s returned by Service Stack will match the request DTO
 
 ServiceStack-Angular-Validaiton consists of a single factory for intercepting $http error responses and two directives for wiring `FieldName`s to the approprate element/ngModel.
 
-The $http interceptor identifies $http error responses containting a non-empty `Errors` array. Each object within the array are simply dispatched as events via Angular's <a href='http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$broadcast'/>$broadcast method</a> on the <a href="http://docs.angularjs.org/api/ng.$rootScope"/>$rootScope</a>. The event contains the `ErrorCode` and `Message` as arguements. The events' names are derived from the error's `FieldName` so creating a lister on the directive (or elsewhere) is straightfoward. 
+The $http interceptor identifies $http error responses containting a non-empty `Errors` array. The interceptor dispatches and event for each object within the array via Angular's <a href='http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$broadcast'/>$broadcast method</a> on the <a href="http://docs.angularjs.org/api/ng.$rootScope"/>$rootScope</a>. The event contains the `ErrorCode` and `Message` as arguements. The events' names are derived from the error's `FieldName` ("ValidationError. + `FieldName`") so creating a listener for the event on the directive (or elsewhere) is straightfoward. 
 
 
 Both directives provided by ServiceStack-Angular-Validaiton use event listeners using Angular's <a href="http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$on"/>$on</a> method. By default, the directive will listen for the name of the element's `ng-model`. 
 
+Example
 ```html
 <input type='text' ng-model='Age' s4-validate-field/>
 ```
 
-However, When the ng-model does not match the request DTO properties exactly, due a nested objects within ng-repeat, a wrapper, or other mapping, a string can be passed to map the approprate DTO property.
+However, when the ng-model name does not match the request DTO properties exactly a string representing the DTO property name can be passed to the directive.
 
+Example
 ```c#
-public class UserRequest // <-- the request DTO 
+public class InsertUserRequest // <-- the request DTO 
 {
     public User user { get; set;}
+    public string foo { get; set; }
+    public string bar { get; set; }
 }
 
 public class User
@@ -62,8 +66,9 @@ public class User
 <input type='text' ng-model='Age' s4-validate-field='user.Age'/>
 ```
 
+Example
 ```c#
-public class ItemsRequest // <-- the request DTO 
+public class InsertItemsRequest // <-- the request DTO 
 {
     public List<Item> Items { get; set;}
 }
@@ -83,8 +88,16 @@ public class Items
 </div>
 ```
 
+Once the directive catches the validation event, the corrosponding `ng-model` is set to invalid via Angular's <a href="http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController#$setValidity"/> `$setValidity` method</a>. Angular will then add `ng-invalid` to the form element's class automatically. In addition, the directive will add the user friendly error `message` to the element's <a href="http://angular-ui.github.io/bootstrap/"/>UI-Bootstrap tooltip</a> if the tooltip directive is present.
 
-Once notified, the directive sets its corrosponding `ng-model` to invalid via Angular's <a href="http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController#$setValidity"/> `$setValidity` method</a>. Angular will then add `ng-invalid` to the form element's class automatically. TODO... continue.
+```html
+  <input type='text' ng-model='propA' s4-validate-field tooltip/>
+</div>
+```
+
+
+
+
 
 
 
