@@ -29,7 +29,7 @@ When using Service Stack <a href="https://github.com/ServiceStack/ServiceStack/w
 }
 ```
 
-Of course, the 'FieldNames' returned by Service Stack will match the request DTO property names.
+Of course, the `FieldName`s returned by Service Stack will match the request DTO property names.
 
 ServiceStack-Angular-Validaiton consists of a single factory for intercepting $http error responses and two directives for wiring `FieldName`s to the approprate element/ngModel.
 
