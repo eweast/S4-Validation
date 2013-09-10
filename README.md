@@ -10,8 +10,28 @@ The ultimate goal of S4 Validation is to wire together Service Stack and Angular
 
 ## How to Use
 
+###Include the 
 
+###Inject the S4ValidationModule into your app.
+```javascript
+angular.module('App', ['S4ValidationModule' ]);
+```
 
+###Register the $http intercept.
+angular.module('App')
+```javascript
+    .config(['$httpProvider', function ($httpProvider) {
+            $httpProvider.responseInterceptors.push('s4HttpInterceptor');
+    }]);
+```
+
+###Use the directive.
+```html
+  <input type='text' ng-model='foo' s4-validate-field tooltip/>
+  <input type='text' ng-model='bar' s4-validate-field="bar"/ tooltip>
+</div>
+```
+`tooltip` requires <a href="http://angular-ui.github.io/bootstrap/">UI Bootstrap</a>. The tooltip directive is optional, but without it, you'll need to extend S4Validation to show the user friendly error message to the user.
 
 
 
@@ -120,7 +140,7 @@ The `ng-model` is set back to valid once the user makes a change to that model. 
 
 Example of result: http://jsfiddle.net/ACehg/1
 
-## Stuff Mentioned That I Do Not Own
+## Things Mentioned That I Do Not Own
 
 AngularJS by Google @ http://angularjs.org/ AND https://github.com/angular/angular.js
 
