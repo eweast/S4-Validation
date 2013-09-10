@@ -123,8 +123,11 @@ Example of result: http://jsfiddle.net/ACehg/1
 ## Stuff Mentioned That I Do Not Own
 
 AngularJS by Google @ http://angularjs.org/
+
 Service Stack by Demis Bellot @ http://www.servicestack.net/ AND https://github.com/ServiceStack/ServiceStack
+
 Fluent Validation by Jeremy Skinner @ http://fluentvalidation.codeplex.com/ AND http://github.com/JeremySkinner/FluentValidation
+
 UI Bootstrap by the Angular-UI Team @ http://angular-ui.github.io/bootstrap/ AND http://github.com/angular-ui/bootstrap
 
 
