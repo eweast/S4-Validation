@@ -11,7 +11,7 @@ Include S4ValidationModule.js in your project.
 
 Inject the S4ValidationModule into your app.
 ```javascript
-angular.module('App', ['S4ValidationModule' ]);
+angular.module('App', ['S4ValidationModule']);
 ```
 
 Register the $http intercept.
@@ -99,15 +99,15 @@ public class InsertItemsRequest // <-- the request DTO
 
 public class Items
 {
-    public string PropertyA { get; set; }
-    public string PropertyB { get; set; }
+    public string foo { get; set; }
+    public string bar { get; set; }
 }
 
 ```
 ```html
 <div ng-repeat='item in items'>
-  <input type='text' ng-model='item.PropertyA' s4-validate-field='Items[{{$index}}].PropertyA'/>
-  <input type='text' ng-model='item.PropertyB' s4-validate-field='Items[{{$index}}].PropertyB'/>
+  <input type='text' ng-model='item.foo' s4-validate-field='Items[{{$index}}].foo'/>
+  <input type='text' ng-model='item.bar' s4-validate-field='Items[{{$index}}].bar'/>
 </div>
 ```
 
@@ -123,7 +123,7 @@ select.ng-invalid {
 
 In addition, the directive will add the user friendly error `message` to the element's <a href="http://angular-ui.github.io/bootstrap/#/tooltip">UI-Bootstrap tooltip</a> if the tooltip directive is present. Obviously, <a href="http://angular-ui.github.io/bootstrap/">UI-Bootstrap</a> is required. 
 ```html
-  <input type='text' ng-model='propA' s4-validate-field tooltip/>
+  <input type='text' ng-model='foo' s4-validate-field tooltip/>
 ```
 
 The `ng-model` is set back to valid once the user makes a change to that model. In addition, the error message displayed by the tooltip is removed once the `ng-model` is changed and its related element loses the focus. This should prevent the user from becoming confused by error indicators and error messages that would otherwise not go away until the form is re-submitted.
@@ -134,15 +134,7 @@ Example of result: http://jsfiddle.net/ACehg/1
 ## Things Mentioned That I Do Not Own
 
 AngularJS by Google @ http://angularjs.org/ AND https://github.com/angular/angular.js
-
 Service Stack by Demis Bellot @ http://www.servicestack.net/ AND https://github.com/ServiceStack/ServiceStack
-
 Fluent Validation by Jeremy Skinner @ http://fluentvalidation.codeplex.com/ AND http://github.com/JeremySkinner/FluentValidation
-
 Bootstrap by Twitter @ http://getbootstrap.com/2.3.2/ AND https://github.com/twbs/bootstrap
-
 UI Bootstrap by the Angular-UI Team @ http://angular-ui.github.io/bootstrap/ AND http://github.com/angular-ui/bootstrap
-
-
-
-
