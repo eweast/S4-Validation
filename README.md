@@ -111,14 +111,14 @@ select.ng-invalid {
 }
 ```
 
-In addition, the directive will add the user friendly error `message` to the element's <a href="http://angular-ui.github.io/bootstrap/">UI-Bootstrap tooltip</a> if the tooltip directive is present.
+In addition, the directive will add the user friendly error `message` to the element's <a href="http://angular-ui.github.io/bootstrap/#/tooltip">UI-Bootstrap tooltip</a> if the tooltip directive is present. Obviously, <a href="http://angular-ui.github.io/bootstrap/">UI-Bootstrap</a> is required. 
 ```html
   <input type='text' ng-model='propA' s4-validate-field tooltip/>
 ```
 
 The `ng-model` is set back to valid once the user makes a change to that model. In addition, the error message displayed by the tooltip is removed once the `ng-model` is changed and its related element loses the focus. This should prevent the user from becoming confused by error indicators and error messages that would otherwise not go away until the form is re-submitted.
 
-Example of result: http://jsfiddle.net/ACehg/
+Example of result: http://jsfiddle.net/ACehg/1
 
 
 
