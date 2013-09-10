@@ -4,7 +4,7 @@ Service Stack Server-Side Validation for AngularJS (S4-Validation)
 
 *** Work in Progress ***
 
-The ultimate goal of S4 Validation is to wire together Service Stack and Angular's validation capabilties with as little configuaration as possible while relying on both frameworks to do the heavy lifting.
+The ultimate goal of S4 Validation is to wire together Service Stack and Angular's validation capabilities with as little configuration as possible while relying on both frameworks to do the heavy lifting.
 
 
 
@@ -63,9 +63,9 @@ When using Service Stack with <a href="https://github.com/ServiceStack/ServiceSt
 
 Of course, the `FieldName`s returned by Service Stack will match the request DTO property names.
 
-S4-Validation consists of a single factory for intercepting $http error responses and two directives for wiring `FieldName`s to the approprate element/ngModel.
+S4-Validation consists of a single factory for intercepting $http error responses and two directives for wiring `FieldName`s to the appropriate element/ngModel.
 
-The $http interceptor identifies $http error responses containting a non-empty `Errors` array. The interceptor dispatches and event for each object within the array via Angular's <a href='http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$broadcast'>$broadcast method</a> on the <a href="http://docs.angularjs.org/api/ng.$rootScope">$rootScope</a>. The event contains the `ErrorCode` and `Message` as arguements. The events' names are derived from the error's `FieldName` ("ValidationError. + `FieldName`") so creating a listener for the event on the directive (or elsewhere) is straightfoward. 
+The $http interceptor identifies $http error responses containing a non-empty `Errors` array. The interceptor dispatches and event for each object within the array via Angular's <a href='http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$broadcast'>$broadcast method</a> on the <a href="http://docs.angularjs.org/api/ng.$rootScope">$rootScope</a>. The event contains the `ErrorCode` and `Message` as arguments. The events' names are derived from the error's `FieldName` ("ValidationError. + `FieldName`") so creating a listener for the event on the directive (or elsewhere) is straightforward. 
 
 
 Both directives provided by S4-Validation use event listeners using Angular's <a href="http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$on">$on</a> method. By default, the directive will listen for the name of the element's `ng-model`. 
@@ -118,7 +118,7 @@ public class Items
 </div>
 ```
 
-Once the directive catches the validation event, the corrosponding `ng-model` is set to invalid via Angular's <a href="http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController#$setValidity">`$setValidity` method</a>. Angular will then add `ng-invalid` to the form element's class automatically.
+Once the directive catches the validation event, the corresponding `ng-model` is set to invalid via Angular's <a href="http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController#$setValidity">`$setValidity` method</a>. Angular will then add `ng-invalid` to the form element's class automatically.
 ```css
 input.ng-invalid,
 textarea.ng-invalid,
