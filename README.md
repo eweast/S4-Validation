@@ -1,5 +1,5 @@
-Service Stack Server-Side Validation for AngularJS (S4-Validation)
-===============================
+#Service Stack Server-Side Validation for AngularJS (S4-Validation)
+
 
 
 *** Work in Progress ***
