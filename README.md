@@ -10,14 +10,14 @@ The ultimate goal of S4 Validation is to wire together Service Stack and Angular
 
 ## How to Use
 
-###Include the 
+1.Include the 
 
-###Inject the S4ValidationModule into your app.
+2.Inject the S4ValidationModule into your app.
 ```javascript
 angular.module('App', ['S4ValidationModule' ]);
 ```
 
-###Register the $http intercept.
+3.Register the $http intercept.
 angular.module('App')
 ```javascript
     .config(['$httpProvider', function ($httpProvider) {
@@ -25,7 +25,7 @@ angular.module('App')
     }]);
 ```
 
-###Use the directive.
+4.Use the directive.
 ```html
   <input type='text' ng-model='foo' s4-validate-field tooltip/>
   <input type='text' ng-model='bar' s4-validate-field="bar"/ tooltip>
