@@ -84,7 +84,7 @@ public class Items
 ```
 
 
-Notified, the directive sets its corrosponding `ng-model` to invalid via Angular's <a href="http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController#$setValidity"/> `$setValidity` method</a>. Angular will then add `ng-invalid` to the form element's class automatically. TODO... continue.
+Once notified, the directive sets its corrosponding `ng-model` to invalid via Angular's <a href="http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController#$setValidity"/> `$setValidity` method</a>. Angular will then add `ng-invalid` to the form element's class automatically. TODO... continue.
 
 
 
