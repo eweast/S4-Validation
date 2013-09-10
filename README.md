@@ -33,7 +33,7 @@ Of course, the `FieldName`s returned by Service Stack will match the request DTO
 
 ServiceStack-Angular-Validaiton consists of a single factory for intercepting $http error responses and two directives for wiring `FieldName`s to the approprate element/ngModel.
 
-The $http interceptor identifies $http error responses containting a non-empty `Errors` array. The interceptor dispatches and event for each object within the array via Angular's <a href='http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$broadcast'/>$broadcast method</a> on the <a href="http://docs.angularjs.org/api/ng.$rootScope"/>$rootScope</a>. The event contains the `ErrorCode` and `Message` as arguements. The events' names are derived from the error's `FieldName` ("ValidationError. + `FieldName`") so creating a listener for the event on the directive (or elsewhere) is straightfoward. 
+The $http interceptor identifies $http error responses containting a non-empty `Errors` array. The interceptor dispatches and event for each object within the array via Angular's <a href='http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$broadcast'/>broadcast method</a> on the <a href="http://docs.angularjs.org/api/ng.$rootScope"/>$rootScope</a>. The event contains the `ErrorCode` and `Message` as arguements. The events' names are derived from the error's `FieldName` ("ValidationError. + `FieldName`") so creating a listener for the event on the directive (or elsewhere) is straightfoward. 
 
 
 Both directives provided by ServiceStack-Angular-Validaiton use event listeners using Angular's <a href="http://code.angularjs.org/1.1.5/docs/api/ng.$rootScope.Scope#$on"/>$on</a> method. By default, the directive will listen for the name of the element's `ng-model`. 
