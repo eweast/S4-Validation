@@ -15,7 +15,6 @@ angular.module('App', ['S4ValidationModule']);
 ```
 
 Register the $http intercept.
-angular.module('App')
 ```javascript
 angular.module('App')
     .config(['$httpProvider', function ($httpProvider) {
